@@ -39,7 +39,7 @@ app.get('/set', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/set`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -49,7 +49,7 @@ app.get('/ip', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/ip`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -60,7 +60,7 @@ app.get('/status', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/status?num=${num}`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -71,7 +71,7 @@ app.get('/info', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/info?num=${num}`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -82,7 +82,7 @@ app.get('/sendotp', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/sendotp?num=${num}`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -93,7 +93,7 @@ app.get('/verifyotp', async (req, res) => {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/verifyotp?num=${num}&otp=${otp}`);
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -111,7 +111,7 @@ app.post('/refresh', async (req, res) => {
         );
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -129,7 +129,7 @@ app.post('/time', async (req, res) => {
         );
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
@@ -147,7 +147,7 @@ app.post('/gift', async (req, res) => {
         );
         res.json(response.data);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+       res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
 });
 
