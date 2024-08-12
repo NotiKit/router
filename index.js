@@ -6,8 +6,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const clouds = [
-    "wataniya-test.djenidi-dev.workers.dev",
-    "wataniya-test.djenidi-dev.workers.dev"
+    "flare.cloud1-917.workers.dev",
+    "flare.cloud2-d98.workers.dev",
+    "flare.cloud3-aa8.workers.dev",
+    "flare.cloud4-8ec.workers.dev",
+    "flare.cloud5-2cd.workers.dev"
 ];
 
 
