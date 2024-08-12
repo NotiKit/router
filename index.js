@@ -3,6 +3,7 @@ const axios = require('axios');
 const https = require('https');
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const clouds = [
     "wataniya-test.djenidi-dev.workers.dev",
@@ -65,13 +66,7 @@ app.get('/info', async (req, res) => {
     const { num } = req.query;
     try {
         const response = await axios.get(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/info?num=${num}`);
-        if (response.status === 204) {
-            res.json({ info: true });
-        } else if (response.status === 404) {
-            res.json({ info: false });
-        } else {
-            res.json({ error: "Unexpected status code" });
-        }
+        res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -103,7 +98,14 @@ app.get('/verifyotp', async (req, res) => {
 app.post('/refresh', async (req, res) => {
     const { rtoken } = req.body;
     try {
-        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/refresh`, { rtoken });
+        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/refresh`,
+            `rtoken=${rtoken}`,
+            {
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            }
+        );
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -114,7 +116,14 @@ app.post('/refresh', async (req, res) => {
 app.post('/time', async (req, res) => {
     const { token } = req.body;
     try {
-        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/time`, { token });
+        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/time`,
+            `token=${token}`,
+            {
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            }
+        );
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -125,7 +134,14 @@ app.post('/time', async (req, res) => {
 app.post('/gift', async (req, res) => {
     const { token } = req.body;
     try {
-        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/gift`, { token });
+        const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/gift`,
+            `token=${token}`,
+            {
+                headers: {
+                    "content-type": "application/x-www-form-urlencoded"
+                }
+            }
+        );
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: error.message });
