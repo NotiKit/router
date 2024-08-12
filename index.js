@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const https = require('https');
 const app = express();
 app.use(express.json());
 
@@ -8,6 +9,20 @@ const clouds = [
     "wataniya-test.djenidi-dev.workers.dev"
 ];
 
+
+function keepRunning() {
+    setInterval(() => {
+        https.get(`${process.env.RENDER_EXTERNAL_URL}/poke`, (resp) => {
+            if (resp.statusCode === 200) {
+                console.log('Poke successful');
+            } else {
+                console.error('Poke failed');
+            }
+        });
+    }, 5 * 60 * 1000);
+};
+
+app.get('/poke', (req, res) => { res.status(200).json({ message: 'Ping successful' }); });
 
 // 1. GET Request to Root Path /
 app.get('/', (req, res) => {
@@ -124,4 +139,5 @@ app.use((req, res) => {
 
 app.listen(3000, () => {
     console.log(`Server is running on port ${3000}`);
+    keepRunning();
 });
