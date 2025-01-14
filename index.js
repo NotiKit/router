@@ -133,6 +133,23 @@ app.post('/time', async (req, res) => {
     }
 });
 
+app.post('/info', async (req, res) => {
+  const { token } = req.body;
+  try {
+      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/info`,
+          `token=${token}`,
+          {
+              headers: {
+                  "content-type": "application/x-www-form-urlencoded"
+              }
+          }
+      );
+      res.json(response.data);
+  } catch (error) {
+      res.status(error.response && error.response.status || 500).json({ error: error.message });
+  }
+});
+
 // 10. POST Request to /gift
 app.post('/gift', async (req, res) => {
     const { token } = req.body;
