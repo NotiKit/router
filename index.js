@@ -133,6 +133,23 @@ app.post('/time', async (req, res) => {
     }
 });
 
+app.post('/sptime', async (req, res) => {
+  const { token } = req.body;
+  try {
+      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/time`,
+          `token=${token}`,
+          {
+              headers: {
+                  "content-type": "application/x-www-form-urlencoded"
+              }
+          }
+      );
+      res.json(response.data);
+  } catch (error) {
+      res.status(error.response && error.response.status || 500).json({ error: error.message });
+  }
+});
+
 app.post('/info', async (req, res) => {
   const { token } = req.body;
   try {
@@ -166,6 +183,23 @@ app.post('/gift', async (req, res) => {
     } catch (error) {
        res.status(error.response && error.response.status || 500).json({ error: error.message });
     }
+});
+
+app.post('/snap', async (req, res) => {
+  const { token } = req.body;
+  try {
+      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/gift`,
+          `token=${token}`,
+          {
+              headers: {
+                  "content-type": "application/x-www-form-urlencoded"
+              }
+          }
+      );
+      res.json(response.data);
+  } catch (error) {
+     res.status(error.response && error.response.status || 500).json({ error: error.message });
+  }
 });
 
 // 11. Fallback for All Other Paths
