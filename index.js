@@ -136,7 +136,7 @@ app.post('/time', async (req, res) => {
 app.post('/sptime', async (req, res) => {
   const { token } = req.body;
   try {
-      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/time`,
+      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/sptime`,
           `token=${token}`,
           {
               headers: {
@@ -188,7 +188,7 @@ app.post('/gift', async (req, res) => {
 app.post('/snap', async (req, res) => {
   const { token } = req.body;
   try {
-      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/gift`,
+      const response = await axios.post(`https://${clouds[Math.floor(Math.random() * clouds.length)]}/snap`,
           `token=${token}`,
           {
               headers: {
