@@ -6,11 +6,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const clouds = [
-    "flare.cloud1-917.workers.dev",
-    "flare.cloud2-d98.workers.dev",
-    "flare.cloud3-aa8.workers.dev",
-    "flare.cloud4-8ec.workers.dev",
-    "flare.cloud5-2cd.workers.dev"
+    "oflare.cloud1-917.workers.dev",
+    "oflare.cloud2-d98.workers.dev",
+    "oflare.cloud3-aa8.workers.dev",
+    "oflare.cloud4-8ec.workers.dev",
+    "oflare.cloud5-2cd.workers.dev",
+    "oflare.cloud6-1d8.workers.dev",
+    "oflare.cloud7-bf1.workers.dev",
+    "oflare.cloud8-56d.workers.dev",
+    "oflare.cloud9-d7c.workers.dev",
 ];
 /*
 const clouds = [
