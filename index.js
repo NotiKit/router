@@ -16,19 +16,6 @@ const clouds = [
     "oflare.cloud8-56d.workers.dev",
     "oflare.cloud9-d7c.workers.dev",
 ];
-/*
-const clouds = [
-    "flare.cloud1-917.workers.dev",
-    "flare.cloud2-d98.workers.dev",
-    "flare.cloud1-917.workers.dev",
-    "flare.cloud3-aa8.workers.dev",
-    "flare.cloud1-917.workers.dev",
-    "flare.cloud4-8ec.workers.dev",
-    "flare.cloud1-917.workers.dev",
-    "flare.cloud5-2cd.workers.dev",
-    "flare.cloud1-917.workers.dev"
-];
-*/
 
 
 function keepRunning() {
@@ -47,7 +34,7 @@ app.get('/poke', (req, res) => { res.status(200).json({ message: 'Ping successfu
 
 // 1. GET Request to Root Path /
 app.get('/', (req, res) => {
-    res.json("GOOD");
+    res.status(200).json({ message: 'Welcome to the API!' });
 });
 
 // 2. GET Request to /set
